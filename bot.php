@@ -59,35 +59,6 @@ function shalat($keyword) {
 	$result .= $json['data']['Isha'];
     return $result;
 }
-
-#-------------------------[Function]-------------------------#
-function quotes($keyword) {
-    $uri = "http://quotes.rest/qod.json?category=" . $keyword;
-    $response = Unirest\Request::get("$uri");
-    $json = json_decode($response->raw_body, true);
-    $result = "Result : ";
-	$result .= $json['success']['total'];
-	$result .= "\nQuotes : ";
-	$result .= $json['contents']['quotes']['quote'];
-	$result .= "\nAuthor : ";
-	$result .= $json['contents']['quotes']['author'];
-    return $result;
-}
-
-#-------------------------[Function]-------------------------#
-function ps($keyword) { 
-    $uri = "https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20171227T171852Z.fda4bd604c7bf41f.f939237fb5f802608e9fdae4c11d9dbdda94a0b5&text=" . $keyword . "&lang=id-id"; 
- 
-    $response = Unirest\Request::get("$uri"); 
- 
-    $json = json_decode($response->raw_body, true); 
-    $result .= "Name : ";
-    $result .= $json['text']['0'];
-    $result .= "\nLink: ";
-    $result .= "https://play.google.com/store/search?q=" . $keyword . "";
-    $result .= "\n\nPencarian : PlayStore";
-    return $result; 
-}
 #-------------------------[Function]-------------------------#
 
 # require_once('./src/function/search-1.php');
@@ -113,38 +84,6 @@ if ($type == 'join' || $command == '/menu') {
 //pesan bergambar
 if($message['type']=='text') {
 	    if ($command == '/shalat') {
-
-        $result = shalat($options);
-        $balas = array(
-            'replyToken' => $replyToken,
-            'messages' => array(
-                array(
-                    'type' => 'text',
-                    'text' => $result
-                )
-            )
-        );
-    }
-
-//pesan bergambar
-if($message['type']=='text') {
-	    if ($command == '/quotes') {
-
-        $result = shalat($options);
-        $balas = array(
-            'replyToken' => $replyToken,
-            'messages' => array(
-                array(
-                    'type' => 'text',
-                    'text' => $result
-                )
-            )
-        );
-    }
-
-//pesan bergambar
-if($message['type']=='text') {
-	    if ($command == '/ps') {
 
         $result = shalat($options);
         $balas = array(
